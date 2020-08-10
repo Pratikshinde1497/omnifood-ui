@@ -17,10 +17,13 @@ export class Navbar extends Component {
               <Link to="/" className="nav-link">Posts</Link>
             </li>
             <li>
-              <Link to="/post" className="nav-link">Create Post</Link>
+              <Link to="/create-post" className="nav-link">Create Post</Link>
             </li>
             <li>
-              <Link to="/user" className="nav-link">Add User</Link>
+              <Link to="/add-user" className="nav-link">Add User</Link>
+            </li>
+            <li>
+              <Link to="/users" className="nav-link">Users List</Link>
             </li>
           </ul>
         </div>

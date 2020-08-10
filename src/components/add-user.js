@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios";
 // import PropTypes from 'prop-types'
 
 export class CreateUser extends Component {
@@ -47,8 +48,12 @@ export class CreateUser extends Component {
       email: this.state.email,
       password: this.state.password
     }
-    console.log(newUser);
-    // window.location='/'
+    console.log({newUser: newUser});
+
+    axios.post("http://localhost:8000/users/", {newUser})
+    .then(res=> console.log(res.data))
+    .catch(err=> console.log(err))
+    window.location='/'
   }
 
   render() {
