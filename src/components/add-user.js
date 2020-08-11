@@ -1,30 +1,24 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import "./add-user.css"
+
 export class AddUser extends Component {
-  
   constructor(props) {
     super(props);
 
-
-    this.setName = this.setName.bind(this);
     this.setEmail = this.setEmail.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this)
 
     this.state = {
-      name : '',
+      user: [],
       email: '',
-      password: ''
+      password: '',
+      err: ''
     } 
-
-
   }
 
-  setName(e) {
-    this.setState({
-      name: e.target.value
-    })
+  componentDidMount() {
+    
   }
 
   setEmail(e) {
@@ -40,38 +34,42 @@ export class AddUser extends Component {
   }
 
   onSubmit(e) {
-    // console.log(this.state);
     e.preventDefault();
-    const newUser = {
-      name: this.state.name,
+    const user = {
       email: this.state.email,
       password: this.state.password
     }
-    console.log({newUser: newUser});
+    axios.post("http://localhost:8000/isUser/", user)
+    .then(res=> res.json())
+    .then(res=> this.setState({
+      user: res
+    }))
+    .catch(err=> this.setState({
+      err: err
+    }))
 
-    axios.post("http://localhost:8000/users/", {newUser})
-    .then(res=> console.log(res.data))
-    .catch(err=> console.log(err));
-
-    this.setState({
-      name: '',
-      email: '',
-      password: ''
-    })
+    // this.setState({
+    //   email: '',
+    //   password: '',
+    //   err: ''
+    // })
     
-    window.location='/'
+    // window.location='/'
   }
 
   render() {
     return (
       <div className="container">
-        <h3>Hello, Lets get started.</h3>
-        <form onSubmit={this.onSubmit} >
-          <input type="text" placeholder="Enter Name" value={this.state.name} onChange={this.setName}/>
-          <input type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
-          <input type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
-
-          <button type="Submit">Make yourself a Home!</button>
+        <h3>Lets! Discover.Learn.Teach.Post</h3>
+        <form onSubmit={this.onSubmit} className="formContainer">
+          <input className="inputField" type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
+          <input className="inputField" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
+          {
+            (this.state.err)
+          ? <p className="errField">{this.state.err}</p>
+          : <p className="errField">err</p>
+        }
+          <button className="btn continue" type="Submit">Continue</button>
         </form>
       </div>
     )

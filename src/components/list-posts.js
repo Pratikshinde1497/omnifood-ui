@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 
-export class MenuList extends Component {
+export class PostList extends Component {
   // static propTypes = {
 
   // }
@@ -15,4 +15,4 @@ export class MenuList extends Component {
   }
 }
 
-export default MenuList
+export default PostList

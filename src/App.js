@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { CreatePost } from "./components/create-post";
 import { AddUser } from "./components/add-user";
-import { MenuList } from "./components/menu-list";
-import { UsersList } from "./components/list-user";
+import { PostList } from "./components/list-posts";
+import { UsersList } from "./components/list-users";
 
 
 
@@ -43,7 +43,7 @@ class App extends Component {
         <Router>
           <Navbar/>
             <div className="component">
-              <Route path="/" exact component={MenuList} />
+              <Route path="/" exact component={PostList} />
               <Route path="/create-post" component={CreatePost} />
               <Route path="/add-user" component={AddUser} />
               <Route path="/users" component={UsersList}/>  

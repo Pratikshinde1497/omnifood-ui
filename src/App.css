@@ -14,7 +14,7 @@ body {
 
 h3 {
   color: slategray;
-  margin: 2em;
+  margin: 1em;
   font-size: 200%;
   font-style: 100;
 }
@@ -69,3 +69,36 @@ h3 {
   height: auto;
 }
 
+.container {
+  width: 50%;
+  margin: auto auto;
+}
+
+.formContainer {
+  text-align: -webkit-center;
+}
+
+.inputField {
+  padding: .5em 1em;
+  display: block;
+  margin-bottom: .5em;
+  font-size: 120%;
+}
+
+.btn {
+  padding: .5em 3em;
+  margin-top: 1.5em;
+  font-size: 120%;
+}
+
+.continue {
+  color: #fff;
+  background-color: #d87a3b;
+  border-style: none;
+  border-radius: 5px;
+}
+
+.errField {
+  height: .5em;
+  color: red;
+}
