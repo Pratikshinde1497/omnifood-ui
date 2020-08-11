@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { CreatePost } from "./components/create-post";
-import { CreateUser } from "./components/add-user";
-import { PostList } from "./components/post-list";
+import { AddUser } from "./components/add-user";
+import { MenuList } from "./components/menu-list";
 import { UsersList } from "./components/list-user";
 
 
@@ -42,12 +42,13 @@ class App extends Component {
         
         <Router>
           <Navbar/>
-          <br/>
-          <Route path="/" exact component={PostList} />
-          <Route path="/create-post" component={CreatePost} />
-          <Route path="/add-user" component={CreateUser} />
-          <Route path="/users" component={UsersList}/>
-        </Router>
+            <div className="component">
+              <Route path="/" exact component={MenuList} />
+              <Route path="/create-post" component={CreatePost} />
+              <Route path="/add-user" component={AddUser} />
+              <Route path="/users" component={UsersList}/>  
+            </div>
+          </Router>
         
       </div>
     );

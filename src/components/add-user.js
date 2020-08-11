@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
-// import PropTypes from 'prop-types'
-
-export class CreateUser extends Component {
+import "./add-user.css"
+export class AddUser extends Component {
   
   constructor(props) {
     super(props);
@@ -52,7 +51,14 @@ export class CreateUser extends Component {
 
     axios.post("http://localhost:8000/users/", {newUser})
     .then(res=> console.log(res.data))
-    .catch(err=> console.log(err))
+    .catch(err=> console.log(err));
+
+    this.setState({
+      name: '',
+      email: '',
+      password: ''
+    })
+    
     window.location='/'
   }
 
@@ -72,4 +78,4 @@ export class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default AddUser;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 
-export class PostList extends Component {
+export class MenuList extends Component {
   // static propTypes = {
 
   // }
@@ -9,10 +9,10 @@ export class PostList extends Component {
   render() {
     return (
       <div>
-        <p>list of posts</p>
+        <p>list of menus</p>
       </div>
     )
   }
 }
 
-export default PostList
+export default MenuList

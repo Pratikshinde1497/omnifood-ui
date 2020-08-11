@@ -1,0 +1,34 @@
+.container {
+  /* background-color: blueviolet; */
+  width: 50%;
+  margin: auto auto;
+}
+
+/* .navbr {
+  background-color: darkslategray;
+  color: aliceblue;
+}
+
+input{
+  display: block;
+  
+  margin-bottom: .5em;
+  text-align: center;
+  width: webkit-fill-available;
+}
+
+/* input :focus,
+input :active {
+  border: slategray;
+} */
+
+/* li {
+  list-style-type: none;
+  color: brown;
+}
+
+h3 {
+  color: slategray;
+  margin-top: 1;
+  margin-bottom: 1.5em;
+} */ 

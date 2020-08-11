@@ -3,23 +3,25 @@ import React, { Component } from 'react'
 
 export class UsersList extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      data: {}
+      data: {},
+      users: [],
+      isLoading: true
     }
   }
 
   testApi() {
     fetch('http://localhost:8000/users')
-      .then(res => res.text())
+      .then(res => res.json())
       .then(data => {
         this.setState({
-        data: data
+        data: data,
+        users: data.message,
+        isLoading: false
       })
-      let d= this.state.data;
-      console.log(d);
-      
+      console.log(this.state.users);
     }).catch(err => console.log(err))
   }
 
@@ -28,11 +30,17 @@ export class UsersList extends Component {
   }
   
   render() {
-    return (
-      <div>
-        <p>Listing users</p>
+    let {isLoading, users} = this.state;
+    if(!isLoading)
+      return <div>
+        <h3>List of Users</h3>
+        <ul>{users.map(user=> 
+        <li key= {user._id}>
+          <p>{user.name}  |  {user.email}</p>
+        </li>
+      )}</ul>
       </div>
-    )
+    return <p>Loading...</p>
   }
 }
 
