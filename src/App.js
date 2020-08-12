@@ -2,11 +2,9 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Navbar } from "./components/navbar";
 import { CreatePost } from "./components/create-post";
-import { AddUser } from "./components/add-user";
+import { SignIn } from "./components/signIn";
 import { PostList } from "./components/list-posts";
 import { UsersList } from "./components/list-users";
-
-
 
 import './App.css';
 
@@ -45,7 +43,7 @@ class App extends Component {
             <div className="component">
               <Route path="/" exact component={PostList} />
               <Route path="/create-post" component={CreatePost} />
-              <Route path="/add-user" component={AddUser} />
+              <Route path="/sign-in" component={SignIn} />
               <Route path="/users" component={UsersList}/>  
             </div>
           </Router>

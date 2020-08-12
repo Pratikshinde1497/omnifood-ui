@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import PostList from './list-posts';
 
-export class AddUser extends Component {
+export class SignIn extends Component {
   constructor(props) {
     super(props);
 
@@ -10,17 +11,17 @@ export class AddUser extends Component {
     this.onSubmit = this.onSubmit.bind(this)
 
     this.state = {
-      user: [],
+      user: null,
+      
       email: '',
       password: '',
-      err: ''
+      success: false
     } 
   }
 
-  componentDidMount() {
-    
+  componentDidUpdate() {
+    this.render()
   }
-
   setEmail(e) {
     this.setState({
       email: e.target.value
@@ -39,20 +40,27 @@ export class AddUser extends Component {
       email: this.state.email,
       password: this.state.password
     }
-    axios.post("http://localhost:8000/isUser/", user)
-    .then(res=> res.json())
-    .then(res=> this.setState({
-      user: res
-    }))
+    axios.post("http://localhost:8000/users/getUserId/", {user})
+    // .then(res=> res.json())
+    .then(res=> {
+      console.log(res);
+      this.setState({
+        user: res.data.message,
+        success: res.data.success
+    })})
     .catch(err=> this.setState({
-      err: err
+      success: err
     }))
 
-    // this.setState({
-    //   email: '',
-    //   password: '',
-    //   err: ''
-    // })
+    if(this.state.success) {
+      this.setState({
+          email: '',
+          password: '',
+        })
+      // window.location='/'
+    }
+    // console.log(this.state.user);
+
     
     // window.location='/'
   }
@@ -65,9 +73,9 @@ export class AddUser extends Component {
           <input className="inputField" type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
           <input className="inputField" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
           {
-            (this.state.err)
-          ? <p className="errField">{this.state.err}</p>
-          : <p className="errField">err</p>
+          (this.state.success)
+          ?       <PostList user={this.state.user}/>  
+          : <p className="errField">{this.state.user}</p> 
         }
           <button className="btn continue" type="Submit">Continue</button>
         </form>
@@ -76,4 +84,4 @@ export class AddUser extends Component {
   }
 }
 
-export default AddUser;
+export default SignIn;

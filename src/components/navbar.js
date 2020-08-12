@@ -17,7 +17,7 @@ export class Navbar extends Component {
             <Link to="/users" className="nav-link">Discover People</Link>
             </li>
             <li>
-              <Link to="/add-user" className="nav-link">Sign in</Link>
+              <Link to="/sign-in" className="nav-link">Sign in</Link>
             </li>
           </ul>
       </nav>

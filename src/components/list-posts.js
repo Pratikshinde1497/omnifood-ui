@@ -9,7 +9,7 @@ export class PostList extends Component {
   render() {
     return (
       <div>
-        <p>list of menus</p>
+        <p>list of Posts</p>
       </div>
     )
   }
