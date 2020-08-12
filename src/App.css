@@ -107,3 +107,38 @@ h3 {
   height: .5em;
   color: red;
 }
+
+.list-item {
+  width: 50%;
+  margin: auto;
+  padding-bottom: 1em;
+
+}
+
+.post-title {
+  
+  font-size: larger;
+  padding-bottom: .5em;
+}
+
+.post-content {
+  display: block;
+  text-align: left;
+  font-size: large;
+  line-break: loose;
+  line-height: 155%;
+}
+
+span::first-letter {
+  font-size: 200%;
+}
+
+span ::first-line {
+  padding-left: 2em;
+}
+
+.post-author {
+  display: block;
+  text-align: right;
+  font-style: italic;
+}

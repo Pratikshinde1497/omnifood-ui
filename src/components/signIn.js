@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from "axios";
 import PostList from './list-posts';
+import { Redirect } from "react-router";
 
 export class SignIn extends Component {
   constructor(props) {
@@ -15,7 +16,8 @@ export class SignIn extends Component {
       
       email: '',
       password: '',
-      success: false
+      success: false,
+      done: false
     } 
   }
 
@@ -47,7 +49,11 @@ export class SignIn extends Component {
       this.setState({
         user: res.data.message,
         success: res.data.success
-    })})
+    })
+    this.setState({
+      done: true
+    })
+  })
     .catch(err=> this.setState({
       success: err
     }))
@@ -66,19 +72,30 @@ export class SignIn extends Component {
   }
 
   render() {
-    return (
+
+    const form = (
       <div className="container">
-        <h3>Lets! Discover.Learn.Teach.Post</h3>
-        <form onSubmit={this.onSubmit} className="formContainer">
-          <input className="inputField" type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
-          <input className="inputField" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
-          {
-          (this.state.success)
-          ?       <PostList user={this.state.user}/>  
-          : <p className="errField">{this.state.user}</p> 
+      <h3>Lets! Discover.Learn.Teach.Post</h3>
+      <form onSubmit={this.onSubmit} className="formContainer">
+        <input className="inputField" type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
+        <input className="inputField" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
+        {
+        (this.state.success)
+        ?       <PostList user={this.state.user}/>  
+        : <p className="errField">{this.state.user}</p> 
+      }
+        <button className="btn continue" type="Submit">Continue</button>
+      </form>
+    </div>
+    )
+
+    return (
+      <div>
+        {
+          this.state.done
+            ? <Redirect to="/" /> 
+            : form
         }
-          <button className="btn continue" type="Submit">Continue</button>
-        </form>
       </div>
     )
   }

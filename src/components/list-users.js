@@ -12,7 +12,7 @@ export class UsersList extends Component {
     }
   }
 
-  testApi() {
+  getUsers() {
     fetch('http://localhost:8000/users')
       .then(res => res.json())
       .then(data => {
@@ -26,7 +26,7 @@ export class UsersList extends Component {
   }
 
   componentWillMount() {
-    this.testApi();
+    this.getUsers();
   }
   
   render() {
@@ -35,8 +35,8 @@ export class UsersList extends Component {
       return <div>
         <h3>List of Users</h3>
         <ul>{users.map(user=> 
-        <li key= {user._id}>
-          <p>{user.name}  |  {user.email}</p>
+        <li key= {user._id} className="list-item">
+          <h4 className="post-title">{user.name}  |  {user.email}</h4>
         </li>
       )}</ul>
       </div>
