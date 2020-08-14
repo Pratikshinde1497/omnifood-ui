@@ -1,0 +1,21 @@
+.createPostContainer {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.createPostForm {
+  padding: 2em 1em; 
+}
+
+input, textarea {
+  padding: .2em;
+  font-size: 120%;
+} 
+
+.btn {
+  padding: .5em;
+  font-size: large;
+}

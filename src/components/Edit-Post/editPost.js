@@ -22,7 +22,7 @@ class EditPost extends Component {
 render() {
 return (
 <div>
-  <h1>Create Post</h1>
+  <h2>Edit Post</h2>
   <form onSubmit={this.handleSubmit}>
     <input required type="text" ref={(input)=>this.getTitle = input} 
     defaultValue ={this.props.post.title}/>
@@ -30,7 +30,7 @@ return (
     <textarea required rows="5" ref={(input)=>this.getMessage = input} cols="28" 
     defaultValue = {this.props.post.message}/>
     <br /><br />
-    <button>Post</button>
+    <button className="btn">Post</button>
   </form>
 </div>
 );

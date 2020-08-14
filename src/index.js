@@ -4,7 +4,7 @@ import App from './App';
 import { createStore } from "redux";
 import postReducer from './reducers/postReducer';
 import { Provider } from "react-redux";
-
+import "./style.css"
 const store = createStore(postReducer);
 
 ReactDOM.render(

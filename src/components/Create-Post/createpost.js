@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import "./style.css"
 
 class PostForm extends Component {
   handleSubmit = (e) => {
@@ -22,16 +23,16 @@ class PostForm extends Component {
   }
 render() {
 return (
-<div>
+<div className="createPostContainer">
   <h1>Create Post</h1>
-  <form onSubmit={this.handleSubmit}>
+  <form onSubmit={this.handleSubmit} className="createPostForm">
     <input required type="text" ref={(input)=>this.getTitle = input} 
-    placeholder="Enter Post Title"/>
+    placeholder="Enter Post Title" />
     <br /><br />
     <textarea required rows="5" ref={(input)=>this.getMessage = input} cols="28" 
     placeholder="Enter Post" />
     <br /><br />
-    <button>Post</button>
+    <button className="btn">Post</button>
   </form>
 </div>
 );

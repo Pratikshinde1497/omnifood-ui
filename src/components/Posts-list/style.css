@@ -1,0 +1,28 @@
+.posts-list-container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+.post-style {
+  padding-bottom: .5em;
+}
+h2 {
+  font-size: 170%;
+  margin-bottom: .2em;
+
+}
+p {
+  font-size: larger;
+  margin-bottom: .5em;
+}
+
+.btn {
+  padding: .5em;
+  font-size: large;
+}
+button :last-child {
+  margin-left: 1em;
+}
