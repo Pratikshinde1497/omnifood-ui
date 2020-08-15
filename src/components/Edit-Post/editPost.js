@@ -13,7 +13,7 @@ class EditPost extends Component {
     }
     this.props.dispatch({
       type: 'UPDATE',
-      id: this.props.post.id,
+      id: this.props.post._id,
       payload: data
     })
     this.getTitle.value = ''
@@ -28,9 +28,9 @@ return (
     defaultValue ={this.props.post.title}/>
     <br /><br />
     <textarea required rows="5" ref={(input)=>this.getMessage = input} cols="28" 
-    defaultValue = {this.props.post.message}/>
+    defaultValue = {this.props.post.content}/>
     <br /><br />
-    <button className="btn">Post</button>
+    <button className="btn">Update Post</button>
   </form>
 </div>
 );

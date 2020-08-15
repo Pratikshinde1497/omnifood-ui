@@ -3,27 +3,32 @@ import { FETCH_POSTS_SUCCESS, FETCH_POSTS_REQUEST, FETCH_POSTS_FAILURE } from ".
 const initialState = {
   loading: true,
   data: [],
-  error: ''
+  error: null
 }
+
 
 const postReducer = (state= initialState, action) => {
   console.log(action.type);
   switch(action.type) {
     case 'ADD_POST':
-      return state.data.concat([action.payload]);
+      console.log(state.data.concat([action.payload]));
+      return {
+        ...state,
+        data: state.data.concat([action.payload])
+      };
     case 'DEL_POST':
-      return {...state, data: state.data.filter(post=> post.id !== action.id)}
+      return {...state, data: state.data.filter(post=> post._id !== action.id)}
     case 'EDIT_POST':
-      return { ...state, data: state.data.map(post=> post.id === action.id ? {...post, editing: !post.editing }: post)}
+      return { ...state, data: state.data.map(post=> post._id === action.id ? {...post, editing: !post.editing }: post)}
     case 'UPDATE':
       return {
         ...state, 
         data: state.data.map((post) => {
-        if (post.id === action.id) {
+        if (post._id === action.id) {
         return {
           ...post,
           title: action.payload.title,
-          message: action.payload.message,
+          message: action.payload.content,
           editing: !post.editing
           }
         } else return post;
@@ -38,7 +43,7 @@ const postReducer = (state= initialState, action) => {
         ...state,
         loading: false,
         data: action.payload,
-        error: ''
+        error: null
       }
     case FETCH_POSTS_FAILURE: 
       return {

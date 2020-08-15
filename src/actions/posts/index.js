@@ -28,9 +28,9 @@ export const fetchPosts = () => {
   return (dispatch) => {
     dispatch(fetchPOSTSRequest);
 
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    axios.get('http://localhost:8000/blogs/')
       .then(res => {
-        const posts = res.data
+        const posts = res.data.message
         dispatch(fetchPOSTSSuccess(posts))
       })
       .catch(err => {

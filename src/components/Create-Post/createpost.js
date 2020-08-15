@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import "./style.css"
+import { Redirect } from 'react-router-dom';
 
 class PostForm extends Component {
   handleSubmit = (e) => {
@@ -9,7 +10,7 @@ class PostForm extends Component {
     const title = this.getTitle.value;
     const message =  this.getMessage.value;
     const data = {
-      id: new Date(),
+      _id: new Date(),
       title,
       message,
       editing: false
@@ -20,6 +21,7 @@ class PostForm extends Component {
     })
     this.getTitle.value = ''
     this.getMessage.value = ''
+    Redirect('/')
   }
 render() {
 return (

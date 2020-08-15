@@ -6,11 +6,11 @@ import "./style.css"
 import { fetchPosts } from '../../actions/posts';
 class AllPost extends Component {
   
-  constructor (props) {
-    super(props)
-    props.fetchPosts()
-  }
 
+  componentDidMount() {
+    this.props.fetchPosts()
+
+  }
   render() {
     return (
     <div className="posts-list-container">
@@ -18,10 +18,10 @@ class AllPost extends Component {
       {
         this.props.posts 
           ? this.props.posts.map(post =>  
-            <div className="post-style" key={post.id}>
+            <div className="post-style" key={post._id}>
               {post.editing 
-                ? <EditPost post={post} key={post.id} /> 
-                : <Post post={post} key={post.id} />}
+                ? <EditPost post={post} key={post._id} /> 
+                : <Post post={post} key={post._id} />}
             </div>)
           : <p>Loading</p>
       }
@@ -31,7 +31,7 @@ class AllPost extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    posts: state.data
+    posts: state.post.data
   }
 }
 

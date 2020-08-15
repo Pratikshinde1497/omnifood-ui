@@ -1,0 +1,30 @@
+.users-list-container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1em;
+}
+
+.user-style {
+  margin-bottom: 2em;
+}
+.h2-user {
+  font-size: 150%;
+  margin-bottom: .2em;
+
+}
+.user-para {
+  text-align: center;
+  font-size: larger;
+  margin: .5em auto;
+
+}
+
+.btn {
+  padding: .5em;
+  font-size: large;
+}
+button :last-child {
+  margin-left: 1em;
+}
