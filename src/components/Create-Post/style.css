@@ -13,6 +13,7 @@
 input, textarea {
   padding: .2em;
   font-size: 120%;
+  width: -webkit-fill-available;
 } 
 
 .btn {

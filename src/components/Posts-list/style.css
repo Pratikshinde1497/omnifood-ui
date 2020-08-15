@@ -7,7 +7,7 @@ h1 {
 }
 
 .post-style {
-  padding-bottom: .5em;
+  margin-bottom: 2em;
 }
 h2 {
   font-size: 170%;
@@ -15,8 +15,12 @@ h2 {
 
 }
 p {
+  text-align: justify;
   font-size: larger;
-  margin-bottom: .5em;
+  margin: .5em auto;
+  line-height: 145%;
+  overflow: hidden;
+  max-width: 75ch;
 }
 
 .btn {

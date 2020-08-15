@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import PostForm from "./components/Create-Post/createpost";
-import AllPost from './components/Posts-list/allPosts';
 import {  BrowserRouter as Router, Route } from "react-router-dom";
+
+import AllPost from './components/Posts-list/allPosts';
+import PostForm from "./components/Create-Post/createpost";
 import Navbar from './components/Navigations/navbar';
 
 class App extends Component {
@@ -13,10 +14,7 @@ class App extends Component {
           <Navbar/>
           <Route path="/" exact component={AllPost} />
           <Route path="/create-post" exact component={PostForm} />
-          
         </Router>
-        {/* <PostForm/>
-        <AllPost/> */}
       </div>
     );
   }
