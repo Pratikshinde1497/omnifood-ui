@@ -16,14 +16,16 @@ class AllPost extends Component {
     <div className="posts-list-container">
       <h1>All Posts</h1>
       {
-        this.props.posts 
-          ? this.props.posts.map(post =>  
+        this.props.posts.error
+          ? (<p>{this.props.posts.error}</p>)
+          : (this.props.posts.data) 
+            ? (this.props.posts.data.map(post =>  
             <div className="post-style" key={post._id}>
               {post.editing 
                 ? <EditPost post={post} key={post._id} /> 
                 : <Post post={post} key={post._id} />}
-            </div>)
-          : <p>Loading</p>
+            </div>))
+          : (<p>Loading</p>)
       }
     </div>
     );
@@ -31,7 +33,7 @@ class AllPost extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    posts: state.post.data
+    posts: state.post
   }
 }
 

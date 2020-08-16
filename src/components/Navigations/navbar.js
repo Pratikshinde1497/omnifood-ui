@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import "./style.css"
+
 export class Navbar extends Component {
   render() {
     return (
@@ -25,4 +27,4 @@ export class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default connect() (Navbar);

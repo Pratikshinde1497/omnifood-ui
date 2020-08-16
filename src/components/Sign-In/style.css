@@ -1,0 +1,10 @@
+
+.succField {
+  height: 1.5em;
+  color: green;
+}
+
+.errField {
+  height: 1.5em;
+  color: red;
+}

@@ -1,4 +1,4 @@
-import { FETCH_POSTS_SUCCESS, FETCH_POSTS_REQUEST, FETCH_POSTS_FAILURE } from "../actions/posts";
+import { FETCH_POSTS_SUCCESS, FETCH_POSTS_REQUEST, FETCH_POSTS_FAILURE, PUSH_POST_REQUEST, PUSH_POST_SUCCESS, PUSH_POST_FAILURE } from "../actions/posts";
 
 const initialState = {
   loading: true,
@@ -10,12 +10,23 @@ const initialState = {
 const postReducer = (state= initialState, action) => {
   console.log(action.type);
   switch(action.type) {
-    case 'ADD_POST':
-      console.log(state.data.concat([action.payload]));
+    case PUSH_POST_REQUEST:
       return {
         ...state,
-        data: state.data.concat([action.payload])
+        loading: true
+      }
+    case PUSH_POST_SUCCESS:
+      return {
+        loading: false,
+        data: state.data.concat([action.payload]),
+        error: null 
       };
+    case PUSH_POST_FAILURE:
+      return {
+        loading: false,
+        data: null,
+        error: action.payload
+      }
     case 'DEL_POST':
       return {...state, data: state.data.filter(post=> post._id !== action.id)}
     case 'EDIT_POST':
@@ -49,7 +60,7 @@ const postReducer = (state= initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.error
+        error: action.payload
       }
     default:
       return state;
