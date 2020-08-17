@@ -15,6 +15,12 @@ export const DELETE_POST_REQUEST = 'DELETE_POST_REQUEST'
 export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS'
 export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE'
 
+//  update: post
+export const UPDATE_POST_REQUEST = 'UPDATE_POST_REQUEST'
+export const UPDATE_POST_SUCCESS = 'UPDATE_POST_SUCCESS'
+export const UPDATE_POST_FAILURE = 'UPDATE_POST_FAILURE'
+
+export const EDIT_POST = 'EDIT_POST'
 
 const fetchPOSTSRequest = () => {
   return {
@@ -56,6 +62,33 @@ const pushPostFailure = (err) => {
   }
 }
 
+const editPost = (id) => {
+  return {
+    type: EDIT_POST,
+    payload: id
+  }
+}
+
+const updatePostRequest = (make_update_post) => {
+  return {
+    type: UPDATE_POST_REQUEST,
+    payload: make_update_post
+  }
+}
+
+const updatePostSuccess = (updatedPost) => {
+  return {
+    type: UPDATE_POST_SUCCESS,
+    payload: updatedPost
+  }
+}
+
+const updatePostFailure = (err) => {
+  return {
+    type: UPDATE_POST_FAILURE,
+    payload: err
+  }
+}
 //  delete: post by id
 const deletePostRequest = () => {
   return {
@@ -63,10 +96,10 @@ const deletePostRequest = () => {
   }
 }
 
-const deletePostSuccess = (res) => {
+const deletePostSuccess = (id) => {
   return {
     type: DELETE_POST_SUCCESS,
-    payload: res
+    payload: id
   }
 }
 
@@ -111,19 +144,43 @@ export const pushPost = (data) => {
   }
 }
 
+
+
 //  delete post function
 export const deletePost = (id) => {
   return (dispatch) => {
     dispatch(deletePostRequest)
-
-    axios.delete('http://localhost:8000/blogs/', `${id}`)
+    axios.delete(`http://localhost:8000/blogs/${id}`)
       .then(res=> res.data)
       .then(res=> {
-        const id = res.message.id
+        const id = res.message._id
         dispatch(deletePostSuccess(id))
       })
       .catch(err=> {
-        dispatch(deletePostFailure(err))
+        dispatch(deletePostFailure(err.error))
       })
+  }
+}
+
+//  put: post 
+
+export const updatePost = (post) => {
+  return (dispatch) => {
+
+    dispatch(updatePostRequest)
+    axios.put(`http://localhost:8000/blogs/${post._id}`,{newBlog: post})
+      .then(res=>res.data)
+      .then(_=> {
+        dispatch(updatePostSuccess(post))
+      })
+      .catch(err=> {
+        dispatch(updatePostFailure(err.error))
+      })
+  }
+}
+
+export const editPostFun = (id) => {
+  return (dispatch) => {
+    dispatch(editPost(id))
   }
 }

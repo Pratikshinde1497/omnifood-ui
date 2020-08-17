@@ -27,7 +27,6 @@ export const fetchLoginUserFailure = (error) => {
 export const loginUser = (credentials) => {
   return (dispatch) => {
     dispatch(fetchLoginUserRequest(credentials));
-    console.log(credentials);
     axios.post('http://localhost:8000/users/getUserId', {user: credentials})
       .then(res=> res.data)
       .then(res => {

@@ -51,8 +51,8 @@ export class SignIn extends Component {
       <div className="container">
       <h3>Lets, Discover.Learn.Teach.Post!</h3>
       <form onSubmit={this.onSubmit} className="formContainer">
-        <input className="inputField" type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
-        <input className="inputField" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
+        <input className="inputField" required type="email" placeholder="Enter Email" value={this.state.email} onChange={this.setEmail}/>
+        <input className="inputField" required type="password" placeholder="Enter Password" value={this.state.password} onChange={this.setPassword}/>
         {
         (this.props.user.error)
         ? <p className="errField">{this.props.user.error}</p> 

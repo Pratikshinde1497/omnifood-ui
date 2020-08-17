@@ -9,7 +9,6 @@ class AllPost extends Component {
 
   componentDidMount() {
     this.props.fetchPosts()
-
   }
   render() {
     return (
@@ -17,7 +16,7 @@ class AllPost extends Component {
       <h1>All Posts</h1>
       {
         this.props.posts.error
-          ? (<p>{this.props.posts.error}</p>)
+          ? (<p className="errField">{this.props.posts.error}</p>)
           : (this.props.posts.data) 
             ? (this.props.posts.data.map(post =>  
             <div className="post-style" key={post._id}>

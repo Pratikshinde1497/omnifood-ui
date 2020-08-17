@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { updatePost } from '../../actions/posts';
 
 class EditPost extends Component {
   
@@ -8,14 +9,12 @@ class EditPost extends Component {
     const title = this.getTitle.value;
     const message =  this.getMessage.value;
     const data = {
+      ...this.props.post,
       title,
-      message,
+      content: message,
+      author: this.props.post.author._id
     }
-    this.props.dispatch({
-      type: 'UPDATE',
-      id: this.props.post._id,
-      payload: data
-    })
+    this.props.updatePost(data)
     this.getTitle.value = ''
     this.getMessage.value = ''
   }
@@ -37,4 +36,10 @@ return (
 }
 }
 
-export default connect()(EditPost);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updatePost: (data) => dispatch(updatePost(data))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(EditPost);

@@ -16,7 +16,7 @@ class AllUsers extends Component {
       <h1>All Users</h1>
       {
         this.props.Users.error
-          ? (<p>{this.props.Users.error}</p>)
+          ? (<p  className="errField">{this.props.Users.error}</p>)
           : (this.props.Users.data)
               ? (this.props.Users.data.map(user =>  
             <div className="user-style" key={user._id}>
