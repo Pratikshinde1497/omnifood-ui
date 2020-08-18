@@ -19,10 +19,9 @@ h3 {
 }
 
 .navbar-brand {
-  padding: 2em 3em;
-  color: #d87a3b;
-  font-size: 120%;
-  font-style: bold;
+  width: 6em;
+
+  margin: 0 3em;
 }
 
 .navbar div{

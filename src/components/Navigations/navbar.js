@@ -7,7 +7,7 @@ export class Navbar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <Link to="/" className="navbar-brand">Blog-Post</Link>
+        <Link to="/"><img src="/android-icon-192x192.png" alt="logo not found"  className="navbar-brand"></img></Link>
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
               <Link to="/" className="nav-link">Posts</Link>
