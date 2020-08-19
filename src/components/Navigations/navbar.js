@@ -2,11 +2,14 @@ import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./style.css"
+import LogoutButton from '../sign-out';
+import LoginButton from '../Sign-In/auth0Login';
+import Profile from './profile';
 
 export class Navbar extends Component {
   render() {
-    return (
-      <nav className="navbar">
+    return ( <div>
+<nav className="navbar">
         <Link to="/"><img src="/android-icon-192x192.png" alt="logo not found"  className="navbar-brand"></img></Link>
           <ul className="navbar-nav mr-auto">
             <li className="navbar-item">
@@ -21,8 +24,16 @@ export class Navbar extends Component {
             <li>
               <Link to="/sign-in" className="nav-link">Sign in</Link>
             </li>
+            <li>
+              <Link to="/auth0-login" className="nav-link" component = {LoginButton} >auth0-login</Link>
+            </li>
+            <li>
+              <Link to="/auth0-log-out" className="nav-link" component={LogoutButton}>auth0-logout</Link>
+            </li>
           </ul>
       </nav>
+      <Profile/>
+    </div>
     )
   }
 }
